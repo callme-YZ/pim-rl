@@ -1,0 +1,41 @@
+def optimize_coils(
+    psi: np.ndarray,
+    Jtor: np.ndarray,
+    I_coil: np.ndarray,
+    coils: CoilSet,
+    constraints: Constraints,
+    gamma: float = 1e-12,
+    grid: Grid = None
+) -> Tuple[np.ndarray, float]:
+    """
+    Adjust coil currents to satisfy constraints
+    
+    Uses constraint_optimizer module
+    """
+    n_coils = len(I_coil)
+    n_constraints = constraints.num_equations()
+    
+    # CRITICAL: Morning lesson - check constraint count!
+    if n_constraints < n_coils:
+        raise ValueError(
+            f"UNDERDETERMINED SYSTEM!\n"
+            f"n_constraints={n_constraints}, n_coils={n_coils}\n"
+            f"Need ≥{n_coils} constraints for {n_coils} coils!"
+        )
+    
+    # Use implemented optimizer
+    I_new, error = optimize_coils_impl(
+        psi=psi,
+        grid=grid,
+        Jtor=Jtor,
+        coil_R=coils.R,
+        coil_Z=coils.Z,
+        I_coil=I_coil,
+        xpoint=constraints.xpoint,
+        isoflux=constraints.isoflux,
+        Ip_target=constraints.Ip_target,
+        gamma=gamma,
+        dI=1.0  # Finite difference step [A]
+    )
+    
+    return I_new, error
