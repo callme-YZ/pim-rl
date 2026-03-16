@@ -1,0 +1,41 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+*.egg-info/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Jupyter
+.ipynb_checkpoints
+
+# Data and outputs
+data/
+results/
+checkpoints/
+*.pkl
+*.npy
+*.h5
+logs/
+*.log
+
+# Temporary
+tmp/
+temp/
+*.tmp
+*~
+
+# macOS
+.DS_Store
+
+# Project-specific
+*.pyc
+.pytest_cache/
