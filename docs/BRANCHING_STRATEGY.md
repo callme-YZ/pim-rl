@@ -18,9 +18,7 @@ main                        # Stable releases (v1.0, v1.1, ...)
   ↓
 develop                     # Development integration
   ↓
-feature/*                   # Feature branches
-  ├── feature/toroidal-geometry      (小P)
-  └── feature/rl-adaptation          (小A)
+feature/*                   # Feature branches (created as needed)
 ```
 
 ---
@@ -103,26 +101,36 @@ git push origin --delete feature/my-feature  # remote (optional)
 
 ```bash
 # ∞ created:
-main → develop → feature/toroidal-geometry (小P)
-               → feature/rl-adaptation (小A)
+main → develop
+
+# Feature branches will be created after YZ decides v1.1 scope
 ```
 
-### Parallel Development
+### When v1.1 Scope is Decided
 
-**小P (Physics):**
+**Create feature branches based on actual tasks:**
 ```bash
-git checkout feature/toroidal-geometry
-# Implement toroidal MHD solver
-git commit -m "Implement toroidal coordinates"
-git push origin feature/toroidal-geometry
+git checkout develop
+git checkout -b feature/<descriptive-name>
+git push -u origin feature/<descriptive-name>
 ```
 
-**小A (RL):**
+### Parallel Development (Example)
+
+**Developer 1:**
 ```bash
-git checkout feature/rl-adaptation
-# Adapt RL environment for toroidal geometry
-git commit -m "Update observation space for toroidal"
-git push origin feature/rl-adaptation
+git checkout feature/<task-1>
+# Implement feature
+git commit -m "..."
+git push origin feature/<task-1>
+```
+
+**Developer 2:**
+```bash
+git checkout feature/<task-2>
+# Implement feature
+git commit -m "..."
+git push origin feature/<task-2>
 ```
 
 ### Integration
