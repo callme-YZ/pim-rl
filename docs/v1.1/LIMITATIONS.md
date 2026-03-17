@@ -2,6 +2,57 @@
 
 **Project:** PTM-RL v1.1 - Toroidal Symplectic MHD  
 **Date:** 2026-03-17  
+**Status:** M3 Step 3.3 completed, M4 Physics Design completed
+
+---
+
+## ⚠️ CRITICAL WARNING: v1.1 is Framework Validation ONLY
+
+### What v1.1 IS:
+- ✅ **Framework validation** — Toroidal geometry + Symplectic integrator work together
+- ✅ **API testing** — RL environment interfaces functional
+- ✅ **Code structure** — Ready for v1.2/v2.0 extensions
+
+### What v1.1 is NOT:
+- ❌ **NOT realistic physics** — Pure diffusion (no Poisson bracket)
+- ❌ **NOT realistic control** — Parameter modulation (not physical actuators)
+- ❌ **NOT scientific contribution** — No new physics insights
+- ❌ **NOT production-ready** — Cannot simulate realistic tearing modes
+
+### DO NOT EXPECT:
+- ❌ Transfer learning to v1.2 (learned policies invalid)
+- ❌ Realistic control strategies (η/ν modulation unrealistic)
+- ❌ Physics insights for real tokamak operations
+- ❌ Quantitative comparison with experiments
+
+### Purpose:
+**v1.1 validates that the framework CAN work.**  
+**v1.2 will demonstrate that it DOES work (with realistic physics).**
+
+---
+
+## Roadmap Position
+
+```
+v1.0: Proof-of-concept (cylindrical + full MHD + realistic control)
+  ↓
+v1.1: Framework validation (toroidal + minimal MHD + parameter modulation) ← YOU ARE HERE
+  ↓  Purpose: Validate toroidal + symplectic framework feasibility
+  ↓
+v1.2: Physics completion (toroidal + Hamiltonian MHD + spatial current drive)
+  ↓  Purpose: Realistic control with complete physics
+  ↓
+v2.0: Production (Elsässer + Wu transformation + Port-Hamiltonian)
+  ↓  Purpose: State-of-the-art MHD solver for fusion
+```
+
+**v1.1 is a stepping stone, not a destination.**
+
+---
+
+
+**Project:** PTM-RL v1.1 - Toroidal Symplectic MHD  
+**Date:** 2026-03-17  
 **Status:** M3 Step 3.3 completed
 
 ---
