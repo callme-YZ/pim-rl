@@ -354,3 +354,53 @@ def laplacian_toroidal_alternative(f: np.ndarray, grid: ToroidalGrid) -> np.ndar
     lap_f = divergence_toroidal(grad_r, grad_theta, grid)
     
     return lap_f
+
+
+def divergence_B_toroidal(psi: np.ndarray, grid: ToroidalGrid) -> np.ndarray:
+    """
+    Compute divergence of magnetic field ∇·B.
+    
+    For 2D axisymmetric toroidal equilibrium:
+        B = B_r ê_r + B_θ ê_θ
+    
+    Uses B_poloidal_from_psi to get correct field components.
+    
+    For poloidal field from ψ:
+        ∇·B_pol = 0 (by construction)
+    
+    This function verifies the divergence-free constraint.
+    
+    Parameters
+    ----------
+    psi : np.ndarray (nr, ntheta)
+        Poloidal flux function
+    grid : ToroidalGrid
+        Toroidal grid
+    
+    Returns
+    -------
+    div_B : np.ndarray (nr, ntheta)
+        Divergence ∇·B (should be ~ 0)
+    
+    Notes
+    -----
+    For verification purposes. Analytical solution should give ∇·B = 0
+    up to numerical discretization error (< 1e-6).
+    
+    Examples
+    --------
+    >>> grid = ToroidalGrid(R0=1.0, a=0.3, nr=64, ntheta=128)
+    >>> from pytokmhd.solvers.equilibrium import circular_equilibrium
+    >>> psi = circular_equilibrium(grid)
+    >>> div_B = divergence_B_toroidal(psi, grid)
+    >>> assert np.max(np.abs(div_B)) < 1e-6
+    """
+    from .utils import B_poloidal_from_psi
+    
+    # Get B components using correct formula
+    B_r, B_theta = B_poloidal_from_psi(psi, grid)
+    
+    # Compute divergence ∇·B
+    div_B = divergence_toroidal(B_r, B_theta, grid)
+    
+    return div_B

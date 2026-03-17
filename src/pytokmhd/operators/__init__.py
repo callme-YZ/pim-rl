@@ -11,15 +11,15 @@ Created: 2026-03-17
 from .toroidal_operators import (
     gradient_toroidal,
     divergence_toroidal,
-    laplacian_toroidal
+    laplacian_toroidal,
+    divergence_B_toroidal
 )
+from .utils import B_poloidal_from_psi
 
 __all__ = [
     'gradient_toroidal',
     'divergence_toroidal',
-    'laplacian_toroidal'
+    'laplacian_toroidal',
+    'divergence_B_toroidal',
+    'B_poloidal_from_psi'
 ]
-from .utils import B_poloidal_from_psi
-
-__all__ = ['gradient_toroidal', 'divergence_toroidal', 'laplacian_toroidal', 
-           'B_poloidal_from_psi']

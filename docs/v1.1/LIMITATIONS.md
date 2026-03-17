@@ -63,6 +63,77 @@ v1.1 implements a **minimal toroidal MHD solver** to validate the toroidal geome
 
 ---
 
+
+---
+
+## ⚠️ M3 Toroidal Solver Numerical Instability (Discovered 2026-03-17)
+
+### Critical Issue
+
+**ToroidalMHDSolver exhibits severe numerical instability:**
+- Exponential growth in first few time steps
+- Occurs with both Symplectic and RK4 integrators
+- Independent of time step size (tested dt = 1e-5 to 1e-3)
+
+### Root Cause (Suspected)
+
+**Toroidal Laplacian operator implementation:**
+- Static tests pass (∇·B < 1e-10) ✅
+- Time evolution fails (solver explodes) ❌
+- Likely subtle bug in finite-difference scheme or boundary handling
+
+### Impact on v1.1
+
+**What WORKS:**
+- ✅ M1: Toroidal geometry operators (static tests pass)
+- ✅ M2: Symplectic integrator (code exists, tested on dummy system)
+- ✅ M4: RL framework design (observation/reward/action specs)
+
+**What FAILS:**
+- ❌ M3: Toroidal MHD time evolution (numerical instability)
+- ❌ Cannot use ToroidalMHDSolver for realistic simulation
+
+### Workaround for v1.1
+
+**Decision (YZ approved 2026-03-17 18:01):**
+
+Use v1.0 cylindrical MHD solver for M4 RL training:
+- v1.0 solver is numerically stable ✅
+- Allows M4 RL integration to proceed
+- v1.1 validates RL framework, not toroidal physics
+
+**What v1.1 delivers:**
+- ✅ Toroidal geometry framework (operators validated)
+- ✅ RL integration working (on stable v1.0 solver)
+- ✅ M4 design documents complete
+- ⚠️ Toroidal time evolution deferred to v1.2
+
+### Fix Timeline
+
+**v1.2 will address:**
+1. Debug toroidal Laplacian implementation (1-2 days dedicated work)
+2. Add comprehensive numerical stability tests
+3. Implement proper boundary conditions (if needed)
+4. Validate against analytical solutions
+5. Long-time evolution tests
+
+**v1.2 prerequisite:** Poisson bracket addition makes system Hamiltonian, which may improve stability naturally.
+
+### Lessons Learned
+
+**P0 Physics Validation insufficient:**
+- M3 tests only used trivial equilibrium (∇²ψ=0)
+- Should have tested non-trivial evolution
+- Numerical stability tests should be mandatory
+
+**Honesty > Marketing:**
+- Better to defer broken solver than ship unstable code
+- v1.1 remains valid stepping stone (framework validation)
+- Clear roadmap to v1.2 fix
+
+---
+
+
 ## Critical Limitation: Integrator-Equation Mismatch
 
 ### Issue
