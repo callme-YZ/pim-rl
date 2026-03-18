@@ -109,7 +109,7 @@ class SymplecticIntegrator:
             E0 = self.compute_energy()
             self.energy_history.append((self.t, E0))
     
-    def step(self) -> None:
+    def step(self, action=None) -> None:
         """
         Take one Störmer-Verlet time step.
         
@@ -119,21 +119,44 @@ class SymplecticIntegrator:
         
         If operator_splitting=False:
             Combined step with dissipation
+        
+        Parameters
+        ----------
+        action : np.ndarray (2,), optional
+            Control action [eta_multiplier, nu_multiplier]
+            If None, uses default [1.0, 1.0] (no modulation)
+            Range: [0.5, 2.0] for each component
+        
+        Notes
+        -----
+        v1.1: Action modulates eta and nu parameters
+        - eta_effective = eta_base * action[0]
+        - nu_effective = nu_base * action[1]
+        
+        v1.2: Will use spatial current drive J_ext(r,θ)
         """
+        # Apply action to get effective parameters
+        if action is None:
+            eta_eff = self.eta
+            nu_eff = self.nu
+        else:
+            eta_eff = self.eta * action[0]
+            nu_eff = self.nu * action[1]
+        
         if self.operator_splitting:
             # Step 1: Symplectic (Hamiltonian part)
             self.psi, self.omega = self._symplectic_step(
                 self.psi, self.omega, self.dt, eta=0.0, nu=0.0
             )
             
-            # Step 2: Dissipation
+            # Step 2: Dissipation (with action-modulated parameters)
             self.psi, self.omega = self._dissipation_step(
-                self.psi, self.omega, self.dt
+                self.psi, self.omega, self.dt, eta_eff, nu_eff
             )
         else:
-            # Combined step
+            # Combined step (with action-modulated parameters)
             self.psi, self.omega = self._symplectic_step(
-                self.psi, self.omega, self.dt, eta=self.eta, nu=self.nu
+                self.psi, self.omega, self.dt, eta=eta_eff, nu=nu_eff
             )
         
         self.t += self.dt
@@ -188,7 +211,7 @@ class SymplecticIntegrator:
         return psi_new, omega_new
     
     def _dissipation_step(self, psi: np.ndarray, omega: np.ndarray,
-                          dt: float) -> Tuple[np.ndarray, np.ndarray]:
+                          dt: float, eta: float, nu: float) -> Tuple[np.ndarray, np.ndarray]:
         """
         Dissipation correction step.
         
@@ -205,6 +228,10 @@ class SymplecticIntegrator:
             Fields after symplectic step
         dt : float
             Time step
+        eta : float
+            Effective resistivity (may be action-modulated)
+        nu : float
+            Effective viscosity (may be action-modulated)
         
         Returns
         -------
@@ -212,14 +239,14 @@ class SymplecticIntegrator:
             Fields with dissipation applied
         """
         # Resistivity
-        if self.eta > 0:
+        if eta > 0:
             lap_psi = laplacian_toroidal(psi, self.grid)
-            psi = psi + dt * self.eta * lap_psi
+            psi = psi + dt * eta * lap_psi
         
         # Viscosity
-        if self.nu > 0:
+        if nu > 0:
             lap_omega = laplacian_toroidal(omega, self.grid)
-            omega = omega + dt * self.nu * lap_omega
+            omega = omega + dt * nu * lap_omega
         
         # Apply boundary conditions
         psi = self._apply_boundary(psi)
