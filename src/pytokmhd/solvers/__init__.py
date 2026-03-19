@@ -11,6 +11,7 @@ from .poisson_toroidal import (
     check_boundary_conditions,
 )
 from .hamiltonian_mhd import HamiltonianMHD
+from .hamiltonian_mhd_imex import HamiltonianMHDIMEX
 
 __all__ = [
     'ToroidalMHDSolver',
@@ -18,4 +19,5 @@ __all__ = [
     'compute_residual',
     'check_boundary_conditions',
     'HamiltonianMHD',
+    'HamiltonianMHDIMEX',
 ]
