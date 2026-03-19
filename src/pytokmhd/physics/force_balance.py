@@ -132,8 +132,20 @@ def compute_current_density(
     dpsi_dr[-1, :] = (3*psi[-1, :] - 4*psi[-2, :] + psi[-3, :]) / (2*dr)
     
     # Grad-Shafranov operator: Δ*ψ
-    Delta_star_psi = (d2psi_dr2 + d2psi_dtheta2 / r_grid**2 + 
-                      np.cos(theta_grid) / R_grid * dpsi_dr)
+    # Handle axis singularity at r=0
+    Delta_star_psi = np.zeros_like(psi)
+    nr = psi.shape[0]
+    
+    for i_r in range(nr):
+        if i_r == 0:
+            # At axis r=0: enforce axisymmetry d²ψ/dθ² = 0
+            # Use L'Hôpital's rule: lim(r→0) d²ψ/dθ²/r² = 0
+            Delta_star_psi[0, :] = d2psi_dr2[0, :] + np.cos(theta_grid[0, :]) / R_grid[0, :] * dpsi_dr[0, :]
+        else:
+            # Standard formula away from axis
+            Delta_star_psi[i_r, :] = (d2psi_dr2[i_r, :] + 
+                                      d2psi_dtheta2[i_r, :] / r_grid[i_r, :]**2 + 
+                                      np.cos(theta_grid[i_r, :]) / R_grid[i_r, :] * dpsi_dr[i_r, :])
     
     # Current density: Jφ = (1/μ₀R)Δ*ψ
     J_phi = Delta_star_psi / (mu0 * R_grid)
