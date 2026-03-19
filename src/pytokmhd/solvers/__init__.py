@@ -10,10 +10,12 @@ from .poisson_toroidal import (
     compute_residual,
     check_boundary_conditions,
 )
+from .hamiltonian_mhd import HamiltonianMHD
 
 __all__ = [
     'ToroidalMHDSolver',
     'solve_poisson_toroidal',
     'compute_residual',
     'check_boundary_conditions',
+    'HamiltonianMHD',
 ]
