@@ -44,11 +44,19 @@ logging = [
 Repository = "https://github.com/callme-YZ/pim-rl"
 
 [tool.setuptools]
-packages = ["pytokmhd", "pim_rl", "pim_rl.physics", "pim_rl.physics.v2"]
+packages = [
+    "pytokmhd",
+    "pim_rl", "pim_rl.physics", "pim_rl.physics.v2",
+    "pytokeq", "pytokeq.core", "pytokeq.equilibrium",
+    "pytokeq.equilibrium.boundary", "pytokeq.equilibrium.diagnostics",
+    "pytokeq.equilibrium.profiles", "pytokeq.equilibrium.solver",
+    "pytokeq.equilibrium.utils", "pytokeq.tests", "pytokeq.validation"
+]
 
 [tool.setuptools.package-dir]
 pytokmhd = "src/pytokmhd"
 pim_rl = "src/pim_rl"
+pytokeq = "src/pytokeq"
 
 [tool.pytest.ini_options]
 testpaths = ["src/pytokmhd/tests"]
