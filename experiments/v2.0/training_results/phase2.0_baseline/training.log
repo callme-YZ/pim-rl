@@ -1,0 +1,1000 @@
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+---------------------------------------
+| time/                   |           |
+|    fps                  | 46        |
+|    iterations           | 375       |
+|    time_elapsed         | 4156      |
+|    total_timesteps      | 192000    |
+| train/                  |           |
+|    approx_kl            | 0.0087213 |
+|    clip_fraction        | 0.113     |
+|    clip_range           | 0.2       |
+|    entropy_loss         | -2.89     |
+|    explained_variance   | 1         |
+|    learning_rate        | 0.0003    |
+|    loss                 | -0.0154   |
+|    n_updates            | 3740      |
+|    policy_gradient_loss | -0.00556  |
+|    std                  | 0.503     |
+|    value_loss           | 4.36e-05  |
+---------------------------------------
+-----------------------------------------
+| time/                   |             |
+|    fps                  | 46          |
+|    iterations           | 376         |
+|    time_elapsed         | 4166        |
+|    total_timesteps      | 192512      |
+| train/                  |             |
+|    approx_kl            | 0.010029074 |
+|    clip_fraction        | 0.153       |
+|    clip_range           | 0.2         |
+|    entropy_loss         | -2.88       |
+|    explained_variance   | 1           |
+|    learning_rate        | 0.0003      |
+|    loss                 | -0.0275     |
+|    n_updates            | 3750        |
+|    policy_gradient_loss | -0.01       |
+|    std                  | 0.503       |
+|    value_loss           | 3.72e-05    |
+-----------------------------------------
+----------------------------------------
+| time/                   |            |
+|    fps                  | 46         |
+|    iterations           | 377        |
+|    time_elapsed         | 4175       |
+|    total_timesteps      | 193024     |
+| train/                  |            |
+|    approx_kl            | 0.01056022 |
+|    clip_fraction        | 0.128      |
+|    clip_range           | 0.2        |
+|    entropy_loss         | -2.87      |
+|    explained_variance   | 1          |
+|    learning_rate        | 0.0003     |
+|    loss                 | -0.0189    |
+|    n_updates            | 3760       |
+|    policy_gradient_loss | -0.00948   |
+|    std                  | 0.5        |
+|    value_loss           | 0.000346   |
+----------------------------------------
+-----------------------------------------
+| time/                   |             |
+|    fps                  | 46          |
+|    iterations           | 378         |
+|    time_elapsed         | 4185        |
+|    total_timesteps      | 193536      |
+| train/                  |             |
+|    approx_kl            | 0.006308764 |
+|    clip_fraction        | 0.126       |
+|    clip_range           | 0.2         |
+|    entropy_loss         | -2.87       |
+|    explained_variance   | 1           |
+|    learning_rate        | 0.0003      |
+|    loss                 | -0.0191     |
+|    n_updates            | 3770        |
+|    policy_gradient_loss | -0.00807    |
+|    std                  | 0.502       |
+|    value_loss           | 0.000546    |
+-----------------------------------------
+------------------------------------------
+| time/                   |              |
+|    fps                  | 46           |
+|    iterations           | 379          |
+|    time_elapsed         | 4195         |
+|    total_timesteps      | 194048       |
+| train/                  |              |
+|    approx_kl            | 0.0076070586 |
+|    clip_fraction        | 0.0818       |
+|    clip_range           | 0.2          |
+|    entropy_loss         | -2.88        |
+|    explained_variance   | 0.998        |
+|    learning_rate        | 0.0003       |
+|    loss                 | 0.00388      |
+|    n_updates            | 3780         |
+|    policy_gradient_loss | -0.00347     |
+|    std                  | 0.502        |
+|    value_loss           | 0.000115     |
+------------------------------------------
+------------------------------------------
+| time/                   |              |
+|    fps                  | 46           |
+|    iterations           | 380          |
+|    time_elapsed         | 4204         |
+|    total_timesteps      | 194560       |
+| train/                  |              |
+|    approx_kl            | 0.0025875242 |
+|    clip_fraction        | 0.0742       |
+|    clip_range           | 0.2          |
+|    entropy_loss         | -2.88        |
+|    explained_variance   | 0.998        |
+|    learning_rate        | 0.0003       |
+|    loss                 | 0.00919      |
+|    n_updates            | 3790         |
+|    policy_gradient_loss | -0.000535    |
+|    std                  | 0.502        |
+|    value_loss           | 0.000204     |
+------------------------------------------
+Eval num_timesteps=195000, episode_reward=-2.31 +/- 0.00
+Episode length: 79.00 +/- 0.00
+-----------------------------------------
+| eval/                   |             |
+|    mean_ep_length       | 79          |
+|    mean_reward          | -2.31       |
+| time/                   |             |
+|    total_timesteps      | 195000      |
+| train/                  |             |
+|    approx_kl            | 0.013186779 |
+|    clip_fraction        | 0.138       |
+|    clip_range           | 0.2         |
+|    entropy_loss         | -2.87       |
+|    explained_variance   | 1           |
+|    learning_rate        | 0.0003      |
+|    loss                 | -0.0187     |
+|    n_updates            | 3800        |
+|    policy_gradient_loss | -0.00945    |
+|    std                  | 0.5         |
+|    value_loss           | 0.000619    |
+-----------------------------------------
+-------------------------------
+| time/              |        |
+|    fps             | 46     |
+|    iterations      | 381    |
+|    time_elapsed    | 4229   |
+|    total_timesteps | 195072 |
+-------------------------------
+-----------------------------------------
+| time/                   |             |
+|    fps                  | 46          |
+|    iterations           | 382         |
+|    time_elapsed         | 4239        |
+|    total_timesteps      | 195584      |
+| train/                  |             |
+|    approx_kl            | 0.012894178 |
+|    clip_fraction        | 0.121       |
+|    clip_range           | 0.2         |
+|    entropy_loss         | -2.86       |
+|    explained_variance   | 0.998       |
+|    learning_rate        | 0.0003      |
+|    loss                 | -0.00228    |
+|    n_updates            | 3810        |
+|    policy_gradient_loss | -0.00547    |
+|    std                  | 0.5         |
+|    value_loss           | 0.00112     |
+-----------------------------------------
+------------------------------------------
+| time/                   |              |
+|    fps                  | 46           |
+|    iterations           | 383          |
+|    time_elapsed         | 4248         |
+|    total_timesteps      | 196096       |
+| train/                  |              |
+|    approx_kl            | 0.0073201787 |
+|    clip_fraction        | 0.0535       |
+|    clip_range           | 0.2          |
+|    entropy_loss         | -2.84        |
+|    explained_variance   | 0.996        |
+|    learning_rate        | 0.0003       |
+|    loss                 | 0.00583      |
+|    n_updates            | 3820         |
+|    policy_gradient_loss | -0.000727    |
+|    std                  | 0.496        |
+|    value_loss           | 0.000732     |
+------------------------------------------
+-----------------------------------------
+| time/                   |             |
+|    fps                  | 46          |
+|    iterations           | 384         |
+|    time_elapsed         | 4258        |
+|    total_timesteps      | 196608      |
+| train/                  |             |
+|    approx_kl            | 0.004060093 |
+|    clip_fraction        | 0.0578      |
+|    clip_range           | 0.2         |
+|    entropy_loss         | -2.81       |
+|    explained_variance   | 1           |
+|    learning_rate        | 0.0003      |
+|    loss                 | -0.00464    |
+|    n_updates            | 3830        |
+|    policy_gradient_loss | -0.00173    |
+|    std                  | 0.494       |
+|    value_loss           | 3.24e-05    |
+-----------------------------------------
+-----------------------------------------
+| time/                   |             |
+|    fps                  | 46          |
+|    iterations           | 385         |
+|    time_elapsed         | 4267        |
+|    total_timesteps      | 197120      |
+| train/                  |             |
+|    approx_kl            | 0.010532476 |
+|    clip_fraction        | 0.105       |
+|    clip_range           | 0.2         |
+|    entropy_loss         | -2.81       |
+|    explained_variance   | 0.996       |
+|    learning_rate        | 0.0003      |
+|    loss                 | -0.00414    |
+|    n_updates            | 3840        |
+|    policy_gradient_loss | -0.00103    |
+|    std                  | 0.494       |
+|    value_loss           | 0.000121    |
+-----------------------------------------
+-----------------------------------------
+| time/                   |             |
+|    fps                  | 46          |
+|    iterations           | 386         |
+|    time_elapsed         | 4277        |
+|    total_timesteps      | 197632      |
+| train/                  |             |
+|    approx_kl            | 0.011147482 |
+|    clip_fraction        | 0.121       |
+|    clip_range           | 0.2         |
+|    entropy_loss         | -2.8        |
+|    explained_variance   | 0.999       |
+|    learning_rate        | 0.0003      |
+|    loss                 | 0.0134      |
+|    n_updates            | 3850        |
+|    policy_gradient_loss | -0.00506    |
+|    std                  | 0.493       |
+|    value_loss           | 0.000106    |
+-----------------------------------------
+-----------------------------------------
+| time/                   |             |
+|    fps                  | 46          |
+|    iterations           | 387         |
+|    time_elapsed         | 4286        |
+|    total_timesteps      | 198144      |
+| train/                  |             |
+|    approx_kl            | 0.010252759 |
+|    clip_fraction        | 0.0943      |
+|    clip_range           | 0.2         |
+|    entropy_loss         | -2.78       |
+|    explained_variance   | 0.999       |
+|    learning_rate        | 0.0003      |
+|    loss                 | 0.00609     |
+|    n_updates            | 3860        |
+|    policy_gradient_loss | -0.00526    |
+|    std                  | 0.49        |
+|    value_loss           | 0.00104     |
+-----------------------------------------
+-----------------------------------------
+| time/                   |             |
+|    fps                  | 46          |
+|    iterations           | 388         |
+|    time_elapsed         | 4296        |
+|    total_timesteps      | 198656      |
+| train/                  |             |
+|    approx_kl            | 0.008553343 |
+|    clip_fraction        | 0.124       |
+|    clip_range           | 0.2         |
+|    entropy_loss         | -2.76       |
+|    explained_variance   | 0.988       |
+|    learning_rate        | 0.0003      |
+|    loss                 | -0.0044     |
+|    n_updates            | 3870        |
+|    policy_gradient_loss | -0.00456    |
+|    std                  | 0.487       |
+|    value_loss           | 0.000607    |
+-----------------------------------------
+-----------------------------------------
+| time/                   |             |
+|    fps                  | 46          |
+|    iterations           | 389         |
+|    time_elapsed         | 4306        |
+|    total_timesteps      | 199168      |
+| train/                  |             |
+|    approx_kl            | 0.012469696 |
+|    clip_fraction        | 0.138       |
+|    clip_range           | 0.2         |
+|    entropy_loss         | -2.74       |
+|    explained_variance   | 0.994       |
+|    learning_rate        | 0.0003      |
+|    loss                 | -0.00715    |
+|    n_updates            | 3880        |
+|    policy_gradient_loss | -0.0108     |
+|    std                  | 0.484       |
+|    value_loss           | 0.000993    |
+-----------------------------------------
+-----------------------------------------
+| time/                   |             |
+|    fps                  | 46          |
+|    iterations           | 390         |
+|    time_elapsed         | 4315        |
+|    total_timesteps      | 199680      |
+| train/                  |             |
+|    approx_kl            | 0.005691177 |
+|    clip_fraction        | 0.0662      |
+|    clip_range           | 0.2         |
+|    entropy_loss         | -2.71       |
+|    explained_variance   | 0.996       |
+|    learning_rate        | 0.0003      |
+|    loss                 | 0.00772     |
+|    n_updates            | 3890        |
+|    policy_gradient_loss | -0.00283    |
+|    std                  | 0.48        |
+|    value_loss           | 0.000107    |
+-----------------------------------------
+Eval num_timesteps=200000, episode_reward=-2.31 +/- 0.00
+Episode length: 79.00 +/- 0.00
+-----------------------------------------
+| eval/                   |             |
+|    mean_ep_length       | 79          |
+|    mean_reward          | -2.31       |
+| time/                   |             |
+|    total_timesteps      | 200000      |
+| train/                  |             |
+|    approx_kl            | 0.011180612 |
+|    clip_fraction        | 0.165       |
+|    clip_range           | 0.2         |
+|    entropy_loss         | -2.69       |
+|    explained_variance   | 0.998       |
+|    learning_rate        | 0.0003      |
+|    loss                 | 0.0158      |
+|    n_updates            | 3900        |
+|    policy_gradient_loss | -0.01       |
+|    std                  | 0.48        |
+|    value_loss           | 9.38e-05    |
+-----------------------------------------
+-------------------------------
+| time/              |        |
+|    fps             | 46     |
+|    iterations      | 391    |
+|    time_elapsed    | 4340   |
+|    total_timesteps | 200192 |
+-------------------------------
+ 100% ━━━━━━━━━━━━━━━━━━━━━━━━━ 200,192/200,000  [ 1:12:17 < 0:00:00 , 26 it/s ]
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+CompleteMHDSolver initialized:
+  Grid: (16, 32, 16)
+  ε: 0.323
+  η: 0.01
+  ∇p scale: 0.2
+MHDSolverWithRMP initialized (RMP control enabled)
+✅ v2.0 Complete Physics + RMP Control initialized:
+   Grid: 16×32×16
+   ε: 0.323
+   η: 0.01
+   RMP coils: 4
+BOUT++ Metric initialized:
+  R₀ = 6.2 m
+  a = 2.0 m
+  ε = 0.323
+Field-Aligned Coordinates initialized
+  q-profile: custom
+======================================================================
+Ballooning IC v2 (with equilibrium background)
+======================================================================
+
+Step 1: Loading Solovev equilibrium...
+Equilibrium Conversion Summary
+============================================================
+Geometry:
+  R₀ = 6.20 m, a = 2.00 m
+  Grid: 16 × 32 × 16
+
+Normalization:
+  B_scale (physical): 1.1340 T
+  P_scale (physical): 1.2608e+05 Pa
+  Normalized to: B~1.00, P~0.05
+
+Field magnitudes (normalized):
+  |B_r|_max: 0.166952
+  |B_θ|_max: 0.198036
+  |B_z|_max: 1.000000
+  <|B|²>^(1/2): 0.733875
+
+Pressure (normalized):
+  P_max: 0.050000
+  <P>: 0.042660
+
+Plasma β:
+  β_max: 0.315944
+  <β>: 0.170475
+
+✅ β~0.170 is tokamak-like (core ~0.02-0.05)
+  ✅ Equilibrium loaded (β_mean = 0.170)
+
+Step 2: Creating ballooning perturbation...
+  Perturbation amplitude: 0.048850
+  ✅ Ballooning mode (m=2, n=1) created
+
+Step 3: Combining background + perturbation...
+  |z⁺|_max: 1.000000
+  |z⁻|_max: 1.000000
+  |B|_mean: 0.727967
+  ✅ Elsasser variables constructed
+
+Step 4: Total pressure...
+  P_mean: 0.042660
+  P_max: 0.050023
+  ✅ Pressure ready
+
+Step 5: Final β check...
+  β_mean: 0.175136
+  β_max: 0.329236
+  ✅ β is reasonable
+
+======================================================================
+Ballooning IC v2 Complete
+======================================================================
+
+⚠️ Amplitude exploded (10.1×), terminating
+⚠️ Amplitude exploded (10.1×), terminating
+⚠️ Amplitude exploded (10.1×), terminating
+⚠️ Amplitude exploded (10.1×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+CompleteMHDSolver initialized:
+  Grid: (16, 32, 16)
+  ε: 0.323
+  η: 0.01
+  ∇p scale: 0.2
+MHDSolverWithRMP initialized (RMP control enabled)
+✅ v2.0 Complete Physics + RMP Control initialized:
+   Grid: 16×32×16
+   ε: 0.323
+   η: 0.01
+   RMP coils: 4
+BOUT++ Metric initialized:
+  R₀ = 6.2 m
+  a = 2.0 m
+  ε = 0.323
+Field-Aligned Coordinates initialized
+  q-profile: custom
+======================================================================
+Ballooning IC v2 (with equilibrium background)
+======================================================================
+
+Step 1: Loading Solovev equilibrium...
+Equilibrium Conversion Summary
+============================================================
+Geometry:
+  R₀ = 6.20 m, a = 2.00 m
+  Grid: 16 × 32 × 16
+
+Normalization:
+  B_scale (physical): 1.1340 T
+  P_scale (physical): 1.2608e+05 Pa
+  Normalized to: B~1.00, P~0.05
+
+Field magnitudes (normalized):
+  |B_r|_max: 0.166952
+  |B_θ|_max: 0.198036
+  |B_z|_max: 1.000000
+  <|B|²>^(1/2): 0.733875
+
+Pressure (normalized):
+  P_max: 0.050000
+  <P>: 0.042660
+
+Plasma β:
+  β_max: 0.315944
+  <β>: 0.170475
+
+✅ β~0.170 is tokamak-like (core ~0.02-0.05)
+  ✅ Equilibrium loaded (β_mean = 0.170)
+
+Step 2: Creating ballooning perturbation...
+  Perturbation amplitude: 0.048850
+  ✅ Ballooning mode (m=2, n=1) created
+
+Step 3: Combining background + perturbation...
+  |z⁺|_max: 1.000000
+  |z⁻|_max: 1.000000
+  |B|_mean: 0.727967
+  ✅ Elsasser variables constructed
+
+Step 4: Total pressure...
+  P_mean: 0.042660
+  P_max: 0.050023
+  ✅ Pressure ready
+
+Step 5: Final β check...
+  β_mean: 0.175136
+  β_max: 0.329236
+  ✅ β is reasonable
+
+======================================================================
+Ballooning IC v2 Complete
+======================================================================
+
+⚠️ Amplitude exploded (10.1×), terminating
+⚠️ Amplitude exploded (10.1×), terminating
+⚠️ Amplitude exploded (10.1×), terminating
+⚠️ Amplitude exploded (10.1×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+CompleteMHDSolver initialized:
+  Grid: (16, 32, 16)
+  ε: 0.323
+  η: 0.01
+  ∇p scale: 0.2
+MHDSolverWithRMP initialized (RMP control enabled)
+✅ v2.0 Complete Physics + RMP Control initialized:
+   Grid: 16×32×16
+   ε: 0.323
+   η: 0.01
+   RMP coils: 4
+BOUT++ Metric initialized:
+  R₀ = 6.2 m
+  a = 2.0 m
+  ε = 0.323
+Field-Aligned Coordinates initialized
+  q-profile: custom
+======================================================================
+Ballooning IC v2 (with equilibrium background)
+======================================================================
+
+Step 1: Loading Solovev equilibrium...
+Equilibrium Conversion Summary
+============================================================
+Geometry:
+  R₀ = 6.20 m, a = 2.00 m
+  Grid: 16 × 32 × 16
+
+Normalization:
+  B_scale (physical): 1.1340 T
+  P_scale (physical): 1.2608e+05 Pa
+  Normalized to: B~1.00, P~0.05
+
+Field magnitudes (normalized):
+  |B_r|_max: 0.166952
+  |B_θ|_max: 0.198036
+  |B_z|_max: 1.000000
+  <|B|²>^(1/2): 0.733875
+
+Pressure (normalized):
+  P_max: 0.050000
+  <P>: 0.042660
+
+Plasma β:
+  β_max: 0.315944
+  <β>: 0.170475
+
+✅ β~0.170 is tokamak-like (core ~0.02-0.05)
+  ✅ Equilibrium loaded (β_mean = 0.170)
+
+Step 2: Creating ballooning perturbation...
+  Perturbation amplitude: 0.048850
+  ✅ Ballooning mode (m=2, n=1) created
+
+Step 3: Combining background + perturbation...
+  |z⁺|_max: 1.000000
+  |z⁻|_max: 1.000000
+  |B|_mean: 0.727967
+  ✅ Elsasser variables constructed
+
+Step 4: Total pressure...
+  P_mean: 0.042660
+  P_max: 0.050023
+  ✅ Pressure ready
+
+Step 5: Final β check...
+  β_mean: 0.175136
+  β_max: 0.329236
+  ✅ β is reasonable
+
+======================================================================
+Ballooning IC v2 Complete
+======================================================================
+
+⚠️ Amplitude exploded (10.1×), terminating
+⚠️ Amplitude exploded (10.1×), terminating
+⚠️ Amplitude exploded (10.1×), terminating
+⚠️ Amplitude exploded (10.1×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+⚠️ Amplitude exploded (10.0×), terminating
+
+============================================================
+✅ Training Complete!
+============================================================
+Training time: 72.3 min (1.21h)
+Throughput: 46.1 steps/sec
+
+✅ Final model saved: ./logs/phase2.0_parallel_seed42/final_model_200k_seed42.zip
+
+============================================================
+Loading evaluation results...
+============================================================
+
+Evaluation Summary:
+Timestep | Mean Reward | Mean Length
+---------|-------------|-------------
+⚠️  5000  |       -3.40 |        80.0
+⚠️ 10000  |       -3.15 |        80.0
+⚠️ 15000  |       -2.15 |        79.0
+⚠️ 20000  |       -2.31 |        79.0
+⚠️ 25000  |       -2.31 |        79.0
+⚠️ 30000  |       -2.31 |        79.0
+⚠️ 35000  |       -2.31 |        79.0
+⚠️ 40000  |       -2.31 |        79.0
+⚠️ 45000  |       -2.31 |        79.0
+⚠️ 50000  |       -2.31 |        79.0
+⚠️ 55000  |       -2.31 |        79.0
+⚠️ 60000  |       -2.31 |        79.0
+⚠️ 65000  |       -2.31 |        79.0
+⚠️ 70000  |       -2.31 |        79.0
+⚠️ 75000  |       -2.31 |        79.0
+⚠️ 80000  |       -2.31 |        79.0
+⚠️ 85000  |       -2.31 |        79.0
+⚠️ 90000  |       -2.31 |        79.0
+⚠️ 95000  |       -2.31 |        79.0
+⚠️ 100000  |       -2.31 |        79.0
+⚠️ 105000  |       -2.31 |        79.0
+⚠️ 110000  |       -2.31 |        79.0
+⚠️ 115000  |       -2.31 |        79.0
+⚠️ 120000  |       -2.31 |        79.0
+⚠️ 125000  |       -2.31 |        79.0
+⚠️ 130000  |       -2.31 |        79.0
+⚠️ 135000  |       -2.31 |        79.0
+⚠️ 140000  |       -2.31 |        79.0
+⚠️ 145000  |       -2.31 |        79.0
+⚠️ 150000  |       -2.31 |        79.0
+⚠️ 155000  |       -2.31 |        79.0
+⚠️ 160000  |       -2.31 |        79.0
+⚠️ 165000  |       -2.31 |        79.0
+⚠️ 170000  |       -2.31 |        79.0
+⚠️ 175000  |       -2.31 |        79.0
+⚠️ 180000  |       -2.31 |        79.0
+⚠️ 185000  |       -2.31 |        79.0
+⚠️ 190000  |       -2.31 |        79.0
+⚠️ 195000  |       -2.31 |        79.0
+⚠️ 200000  |       -2.31 |        79.0
+
+============================================================
+Learning Analysis
+============================================================
+Initial reward:  -3.40
+Best reward:     -2.15
+Final reward:    -2.31
+
+Improvement (best):  +36.8%
+Improvement (final): +32.1%
+
+============================================================
+GATE DECISION
+============================================================
+✅✅ PASS: Significant learning detected (>10%)
+→ Proceed to Phase 2.1-2.3 (advanced methods)
+
+⚠️  Stability: Episodes short (avg 79.0 steps)
+
+✅ Decision saved: ./logs/phase2.0_parallel_seed42//gate_decision.txt
+
+============================================================
+Phase 2.0 Complete (Seed 42)
+============================================================
