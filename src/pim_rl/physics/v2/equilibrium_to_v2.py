@@ -9,7 +9,7 @@ Purpose: 从equilibrium solver生成realistic B₀, P₀
 
 import jax.numpy as jnp
 import numpy as np
-from .solovev import SolovevEquilibrium, make_standard_solovev
+from pytokeq.equilibrium.profiles.solovev import SolovevEquilibrium, make_standard_solovev
 
 
 def solovev_to_toroidal(metric, grid_shape, scale_B=1.0, scale_P=1.0):
