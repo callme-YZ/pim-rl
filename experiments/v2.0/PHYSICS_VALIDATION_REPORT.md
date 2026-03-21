@@ -87,7 +87,7 @@ fft(v)  # δB only
 
 ### Results
 
-**Measured growth rate:** γ = 1.29  
+**Measured growth rate:** γ = 1.18  
 **Theory prediction:** γ_theory = √(β/ε) = 0.73
 
 **Analysis:**
@@ -264,7 +264,7 @@ m1_amplitude = fft[1]  # m=1 mode
 m2_amplitude = fft[2]  # m=2 mode (matches IC)
 ```
 
-**Impact:** C1 initially showed γ=-0.011 (decay!) → After fix: γ=1.29 (growth) ✅
+**Impact:** C1 initially showed γ=-0.011 (decay!) → After fix: γ=1.18 (growth) ✅
 
 **Lesson:** Always verify observation/reward measures the right physics quantity.
 
@@ -301,7 +301,7 @@ fft = np.fft.fft(v)         # Perturbation only
 
 | Test | Metric | Target | Result | Status |
 |------|--------|--------|--------|--------|
-| C1   | Growth rate positive | Yes | γ=1.29 > 0 ✅ | ✅ PASS |
+| C1   | Growth rate positive | Yes | γ=1.18 > 0 ✅ | ✅ PASS |
 | C1   | Order of magnitude | O(1) | 1.29 ✅ | ✅ PASS |
 | C2   | Energy drift | <1% | 0.38% ✅ | ✅ PASS |
 | C2   | Secular growth | <5% @t=10 | 1.8% ✅ | ✅ PASS |
