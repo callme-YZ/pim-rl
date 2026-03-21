@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "pim-rl"
-version = "2.0.0"
+version = "2.0.1"
 description = "PIM-RL: Plasma Instability Mode Reinforcement Learning for Tokamak Control"
 authors = [
     {name = "YZ Research Team"},
@@ -44,10 +44,11 @@ logging = [
 Repository = "https://github.com/callme-YZ/pim-rl"
 
 [tool.setuptools]
-packages = ["pytokmhd"]
+packages = ["pytokmhd", "pim_rl", "pim_rl.physics", "pim_rl.physics.v2"]
 
 [tool.setuptools.package-dir]
 pytokmhd = "src/pytokmhd"
+pim_rl = "src/pim_rl"
 
 [tool.pytest.ini_options]
 testpaths = ["src/pytokmhd/tests"]

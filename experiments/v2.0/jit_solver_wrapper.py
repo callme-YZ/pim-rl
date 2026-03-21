@@ -11,8 +11,8 @@ import jax
 import jax.numpy as jnp
 from functools import partial
 
-from elsasser_bracket import ElsasserState
-from complete_solver import CompleteMHDSolver
+from pim_rl.physics.v2.elsasser_bracket import ElsasserState
+from pim_rl.physics.v2.complete_solver import CompleteMHDSolver
 
 
 class JITMHDSolver:

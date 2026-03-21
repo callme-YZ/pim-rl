@@ -20,20 +20,15 @@ Reward: -|m=1 amplitude| (suppress ballooning)
 import numpy as np
 import gymnasium as gym
 from gymnasium import spaces
-import sys
-import os
-
-# Add v2.0 physics path
-sys.path.insert(0, '/Users/yz/.openclaw/workspace-xiaop/v2.0/src')
 
 try:
     import jax.numpy as jnp
-    from elsasser_bracket import ElsasserState
-    from complete_solver_with_rmp import MHDSolverWithRMP
-    from ballooning_ic_v2 import ballooning_mode_ic_v2
-    from bout_metric import BOUTMetric
-    from field_aligned import FieldAlignedCoordinates
-    from toroidal_hamiltonian import toroidal_hamiltonian
+    from pim_rl.physics.v2.elsasser_bracket import ElsasserState
+    from pim_rl.physics.v2.complete_solver_with_rmp import MHDSolverWithRMP
+    from pim_rl.physics.v2.ballooning_ic_v2 import ballooning_mode_ic_v2
+    from pim_rl.physics.v2.bout_metric import BOUTMetric
+    from pim_rl.physics.v2.field_aligned import FieldAlignedCoordinates
+    from pim_rl.physics.v2.toroidal_hamiltonian import toroidal_hamiltonian
     JAX_AVAILABLE = True
 except ImportError as e:
     print(f"Warning: JAX import failed: {e}")
