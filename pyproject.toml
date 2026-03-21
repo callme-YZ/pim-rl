@@ -3,9 +3,9 @@ requires = ["setuptools>=45", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "ptm-rl"
-version = "1.0.0"
-description = "PyTokMHD + RL: Reinforcement Learning for Tokamak Plasma Control"
+name = "pim-rl"
+version = "2.0.0"
+description = "PIM-RL: Plasma Instability Mode Reinforcement Learning for Tokamak Control"
 authors = [
     {name = "YZ Research Team"},
 ]
@@ -41,7 +41,7 @@ logging = [
 ]
 
 [project.urls]
-Repository = "https://github.com/callme-YZ/ptm-rl"
+Repository = "https://github.com/callme-YZ/pim-rl"
 
 [tool.setuptools]
 packages = ["pytokmhd"]

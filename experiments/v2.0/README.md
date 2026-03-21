@@ -1,4 +1,4 @@
-# PTM-RL v2.0: Elsässer MHD + RL Framework
+# PIM-RL v2.0: Elsässer MHD + RL Framework
 
 **Phase 1 Status:** Physics layer validated ✅ | RL layer exploratory ⏳  
 **Branch:** `feature/v2.0-elsasser`  

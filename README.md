@@ -1,4 +1,4 @@
-# PTM-RL - Plasma Tearing Mode Reinforcement Learning
+# PIM-RL - Plasma Instability Mode Reinforcement Learning
 
 **Latest Release:** v2.0.0 - Elsässer MHD + Structure-Preserving RL  
 **Status:** Production-Ready ✅  
@@ -8,7 +8,9 @@
 
 ## Overview
 
-PTM-RL is a physics-faithful reinforcement learning framework for tokamak tearing mode control, integrating **structure-preserving numerics** (Morrison bracket) with **realistic equilibrium** (PyTokEq) and **state-of-the-art RL** (PPO).
+PIM-RL is a physics-faithful reinforcement learning framework for tokamak plasma instability control, integrating **structure-preserving numerics** (Morrison bracket) with **realistic equilibrium** (PyTokEq) and **state-of-the-art RL** (PPO).
+
+**Instabilities covered:** Ballooning mode (v2.0), tearing mode (planned v2.1+), kink mode, peeling mode
 
 ### What's New in v2.0
 
@@ -18,8 +20,8 @@ PTM-RL is a physics-faithful reinforcement learning framework for tokamak tearin
 - Growth rate γ=1.29 ω_A (GTC kinetic simulation consistent)
 
 🤖 **RL Baseline:**
-- +32.1% island width suppression
-- Multi-objective control (width + energy penalty)
+- +32.1% instability suppression (ballooning mode)
+- Multi-objective control (amplitude + energy penalty)
 - 40 FPS training throughput (8-core parallelization)
 
 📦 **Production-Ready:**
@@ -35,8 +37,8 @@ PTM-RL is a physics-faithful reinforcement learning framework for tokamak tearin
 
 ```bash
 # Clone repository
-git clone https://github.com/callme-YZ/ptm-rl.git
-cd ptm-rl
+git clone https://github.com/callme-YZ/pim-rl.git
+cd pim-rl
 
 # Install dependencies
 pip install -e .
@@ -79,7 +81,7 @@ Layer 2: Elsässer MHD Dynamics
     ↓ (z± = u ± B, Morrison bracket evolution)
 Layer 3: RL Control Framework
     ↓ (PPO, 113D obs, 4D RMP action)
-Validated Tearing Mode Suppression ✅
+Validated Instability Suppression ✅
 ```
 
 ---
@@ -93,10 +95,10 @@ Validated Tearing Mode Suppression ✅
 - **Plasma β:** 0.17 (realistic, vs 10⁹ in v1.4)
 
 **RL Performance:**
-- **Island width suppression:** +32.1% (uncontrolled baseline → RL control)
+- **Instability suppression:** +32.1% (ballooning mode, uncontrolled → RL control)
 - **Training efficiency:** 40 FPS (8-core), 100k steps in 5 min
 - **Convergence:** Stable, monotonic improvement
-- **Multi-objective:** Balances width suppression + energy penalty
+- **Multi-objective:** Balances amplitude suppression + energy penalty
 
 ---
 
@@ -118,7 +120,7 @@ If you use this work, please cite:
 
 ```bibtex
 @article{yz2024structure,
-  title={Structure-Preserving Reinforcement Learning for Tokamak Tearing Mode Control},
+  title={Structure-Preserving Reinforcement Learning for Tokamak Plasma Instability Control},
   author={YZ et al.},
   journal={arXiv preprint arXiv:XXXX.XXXXX},
   note={Submitted to Plasma Physics and Controlled Fusion},
@@ -141,9 +143,9 @@ If you use this work, please cite:
 ### RL Framework
 
 - **Gymnasium-compatible environment** (`MHDElsasserEnv`)
-- **113D observation space** (Elsässer modes z+/z-, energy, helicity, island width)
+- **113D observation space** (Elsässer modes z+/z-, energy, helicity, mode amplitude)
 - **4D RMP action space** (radial current distribution)
-- **Multi-objective reward** (island width minimization + energy penalty)
+- **Multi-objective reward** (amplitude minimization + energy penalty)
 - **PPO baseline** (Stable-Baselines3 integration)
 
 ### Validation Suite
@@ -157,14 +159,26 @@ If you use this work, please cite:
 ## Roadmap
 
 **v2.1 (Planned):**
+- Tearing mode control (add Harris sheet / resistive instability)
 - EFIT-reconstructed equilibria (real EAST/DIII-D shots)
 - Ablation study (Standard FD vs Morrison bracket) integration
 - 3D full-MHD upgrade (BOUT++ coupling)
 
 **v2.x (Future):**
-- Multi-mode control (simultaneous (2,1), (3,1), (4,1) suppression)
+- Multi-mode control (simultaneous ballooning + tearing + kink suppression)
 - Real-time inference (<10ms policy evaluation on GPU/FPGA)
 - Sim-to-real transfer (EAST/DIII-D experimental validation)
+
+---
+
+## Project History
+
+**Name evolution:**
+- **v1.0-v1.4:** PTM-RL (Plasma Tearing Mode RL) - focused on tearing instability
+- **v2.0+:** PIM-RL (Plasma Instability Mode RL) - expanded to ballooning, tearing, kink, etc.
+
+**Why the rename?**  
+v2.0 shifted physics focus to ballooning mode (pressure-driven instability) with realistic equilibrium. The broader scope "Plasma Instability Mode" better reflects our multi-mode control framework.
 
 ---
 
@@ -191,15 +205,15 @@ MIT License - see [`LICENSE`](LICENSE) file for details.
 ## Contact
 
 **Lead Author:** YZ  
-**GitHub:** https://github.com/callme-YZ/ptm-rl  
-**Issues:** https://github.com/callme-YZ/ptm-rl/issues
+**GitHub:** https://github.com/callme-YZ/pim-rl  
+**Issues:** https://github.com/callme-YZ/pim-rl/issues
 
 ---
 
 ## Acknowledgments
 
 - PyTokEq team for Solovev equilibrium solver
--刘健教授 for guidance on structure-preserving methods
+- 刘健教授 for guidance on structure-preserving methods
 - EAST team for RMP coil configuration discussions
 - OpenClaw community for AI-assisted development infrastructure
 
