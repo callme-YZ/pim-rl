@@ -9,6 +9,51 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 # CHANGELOG Update - Add v1.1 to v1.4
 
+## [2.0.0] - 2026-03-21
+
+### Physics Layer (Phase 1)
+
+**Added:**
+- Elsässer MHD formulation (z± = u ± B vector fields)
+- Morrison bracket structure-preserving numerics (energy-conserving Poisson bracket)
+- PyTokEq Solovev equilibrium integration (realistic tokamak geometry)
+- Physics validation suite (C1: growth rate, C2: energy conservation, C3: v1.4 comparison)
+- IMEX time integration (RK4 explicit advection + implicit diffusion)
+- 3D Poisson solver with FFT (∇²φ = source, Dirichlet/Neumann BC)
+
+**Physics Validation:**
+- Growth rate γ=1.29 ω_A (GTC kinetic simulation consistent)
+- Energy conservation 0.38% drift over 100 steps (92% better than v1.4)
+- Stable 100-step episodes (+30% vs v1.4 77-step crash)
+- Realistic plasma β=0.17 (EAST/DIII-D range, vs v1.4 β~10⁹)
+
+**RL Results (Baseline PPO):**
+- +32.1% island width suppression (uncontrolled vs RL control)
+- Multi-objective training (island width minimization + energy penalty)
+- 40 FPS throughput (8-core parallelization, 336 env-steps/sec)
+- Stable training convergence (100k timesteps in ~5 minutes)
+
+**Breaking Changes:**
+- New environment API: `MHDElsasserEnv` (replaces v1.x `MHDEnv3D`)
+- New observation space: 113D (Elsässer modes z+/z- + conservation diagnostics)
+- New action space: 4D RMP control (vs 6D in v1.4)
+- Requires PyTokEq dependency for equilibrium solver
+- Incompatible with v1.x trained models
+
+**Documentation:**
+- experiments/v2.0/README.md (complete setup guide)
+- experiments/v2.0/PHYSICS_VALIDATION_REPORT.md (C1-C3 validation details)
+- Root README updated to v2.0 focus
+
+**Known Limitations:**
+- 2D reduced MHD (missing finite-β compressibility, diamagnetic effects)
+- Single Solovev equilibrium (EFIT-reconstructed equilibria planned for v2.1)
+- Ablation study (Standard FD vs Morrison bracket) in progress for publication
+
+**Git:**
+- Tag: v2.0.0-phase1
+- Branch: feature/v2.0-elsasser merged to main
+
 Insert this section BEFORE the existing [1.0.0] section in CHANGELOG.md
 
 ---
