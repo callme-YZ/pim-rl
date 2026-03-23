@@ -1,0 +1,37 @@
+# Phase 3: Hamiltonian RL v2.1 Requirements
+
+# Core Dependencies
+torch>=2.0.0
+numpy>=1.24.0
+stable-baselines3>=2.0.0
+gymnasium>=0.28.0
+
+# Environment (v2.0 MHD Elsasser)
+# Located in ../v2.0/mhd_elsasser_env.py
+# Requires: numpy, torch (already listed)
+
+# Analysis & Visualization
+matplotlib>=3.7.0
+
+# Optional (for development)
+pytest>=7.0.0  # Testing
+tensorboard>=2.12.0  # Training visualization
+jupyter>=1.0.0  # Notebooks
+
+# Python Version
+# Tested on Python 3.9.6
+# Should work on Python >=3.9
+
+# Hardware Requirements
+# - CPU: Multi-core recommended (8+ cores for parallel training)
+# - RAM: ~8 GB (with 8 parallel environments)
+# - Disk: ~5 GB (for logs, models, analysis results)
+
+# Installation Instructions
+# 1. Install PyTorch: https://pytorch.org/get-started/locally/
+# 2. pip install -r requirements.txt
+# 3. Verify: python -c "import torch, stable_baselines3; print('OK')"
+
+# Usage
+# See examples/quickstart.py for basic training example
+# See scripts/train_hamiltonian_variants.py for production training
