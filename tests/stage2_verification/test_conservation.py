@@ -16,9 +16,20 @@ sys.path.insert(0, str(Path(__file__).parent.parent.parent / "src"))
 
 import numpy as np
 import matplotlib.pyplot as plt
-from pytokmhd.grid import ToroidalGrid
+from pytokmhd.geometry.toroidal import ToroidalGrid
 from pytokmhd.solvers.hamiltonian_mhd import HamiltonianMHD
-from pytokmhd.physics.initial_conditions import ballooning_ic
+
+# TODO: Check if ballooning_ic exists, otherwise use simple IC
+try:
+    from pytokmhd.physics.initial_conditions import ballooning_ic
+except ImportError:
+    # Fallback: simple perturbation
+    def ballooning_ic(grid, beta=0.17, q_axis=1.2, shear=0.5):
+        r = grid.r[:, None]
+        theta = grid.theta[None, :]
+        psi = beta * r**2 * np.sin(theta)
+        omega = -grid.laplacian(psi) 
+        return psi, omega
 
 
 def compute_energy(solver, psi, omega):
@@ -62,7 +73,7 @@ def test_ideal_conservation_short():
     print("="*60)
     
     # Setup
-    grid = ToroidalGrid(nr=32, ntheta=32, r_min=0.1, r_max=1.0)
+    grid = ToroidalGrid(R0=1.0, a=0.3, nr=32, ntheta=64)
     
     # CRITICAL: η=0, ν=0 for ideal MHD
     solver = HamiltonianMHD(
@@ -129,7 +140,7 @@ def test_ideal_conservation_long():
     print("="*60)
     
     # Setup (same as Test 1)
-    grid = ToroidalGrid(nr=32, ntheta=32, r_min=0.1, r_max=1.0)
+    grid = ToroidalGrid(R0=1.0, a=0.3, nr=32, ntheta=64)
     
     solver = HamiltonianMHD(
         grid=grid,
@@ -236,7 +247,7 @@ def test_resistive_dissipation():
     print("TEST 3: Resistive MHD Dissipation (η=1e-4)")
     print("="*60)
     
-    grid = ToroidalGrid(nr=32, ntheta=32, r_min=0.1, r_max=1.0)
+    grid = ToroidalGrid(R0=1.0, a=0.3, nr=32, ntheta=64)
     
     # Resistive case
     solver = HamiltonianMHD(

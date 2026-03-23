@@ -18,8 +18,19 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent.parent.parent / "src"))
 
 import numpy as np
-from pytokmhd.grid import ToroidalGrid
-from pytokmhd.operators.poisson_bracket import poisson_bracket
+from pytokmhd.geometry.toroidal import ToroidalGrid
+
+# TODO: Find correct Poisson bracket implementation
+try:
+    from pytokmhd.operators.poisson_bracket import poisson_bracket
+except ImportError:
+    # Fallback: use solver's method
+    from pytokmhd.solvers.hamiltonian_mhd import HamiltonianMHD
+    
+    def poisson_bracket(F, G, grid):
+        """Wrapper using HamiltonianMHD's bracket"""
+        solver = HamiltonianMHD(grid=grid, dt=1e-3, eta=0.0, nu=0.0)
+        return solver.poisson_bracket(F, G)
 
 
 def test_antisymmetry():
@@ -34,7 +45,7 @@ def test_antisymmetry():
     print("TEST 1: Antisymmetry {F,G} = -{G,F}")
     print("="*60)
     
-    grid = ToroidalGrid(nr=32, ntheta=32, r_min=0.1, r_max=1.0)
+    grid = ToroidalGrid(R0=1.0, a=0.3, nr=32, ntheta=64)
     
     r = grid.R[:, None]
     theta = grid.theta[None, :]
@@ -77,7 +88,7 @@ def test_jacobi_identity():
     print("TEST 2: Jacobi Identity")
     print("="*60)
     
-    grid = ToroidalGrid(nr=32, ntheta=32, r_min=0.1, r_max=1.0)
+    grid = ToroidalGrid(R0=1.0, a=0.3, nr=32, ntheta=64)
     
     r = grid.R[:, None]
     theta = grid.theta[None, :]
@@ -127,7 +138,7 @@ def test_leibniz_rule():
     print("TEST 3: Leibniz Rule {F,GH} = {F,G}H + G{F,H}")
     print("="*60)
     
-    grid = ToroidalGrid(nr=32, ntheta=32, r_min=0.1, r_max=1.0)
+    grid = ToroidalGrid(R0=1.0, a=0.3, nr=32, ntheta=64)
     
     r = grid.R[:, None]
     theta = grid.theta[None, :]
@@ -177,7 +188,7 @@ def test_energy_bracket():
     from pytokmhd.solvers.hamiltonian_mhd import HamiltonianMHD
     from pytokmhd.physics.initial_conditions import ballooning_ic
     
-    grid = ToroidalGrid(nr=32, ntheta=32, r_min=0.1, r_max=1.0)
+    grid = ToroidalGrid(R0=1.0, a=0.3, nr=32, ntheta=64)
     solver = HamiltonianMHD(grid=grid, dt=1e-3, eta=0.0, nu=0.0)
     
     psi, omega = ballooning_ic(grid, beta=0.17, q_axis=1.2, shear=0.5)

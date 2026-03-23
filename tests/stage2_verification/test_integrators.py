@@ -19,9 +19,19 @@ sys.path.insert(0, str(Path(__file__).parent.parent.parent / "src"))
 
 import numpy as np
 import matplotlib.pyplot as plt
-from pytokmhd.grid import ToroidalGrid
+from pytokmhd.geometry.toroidal import ToroidalGrid
 from pytokmhd.solvers.hamiltonian_mhd import HamiltonianMHD
-from pytokmhd.physics.initial_conditions import ballooning_ic
+
+# TODO: Check if ballooning_ic exists
+try:
+    from pytokmhd.physics.initial_conditions import ballooning_ic
+except ImportError:
+    def ballooning_ic(grid, beta=0.17, q_axis=1.2, shear=0.5):
+        r = grid.r[:, None]
+        theta = grid.theta[None, :]
+        psi = beta * r**2 * np.sin(theta)
+        omega = -grid.laplacian(psi)
+        return psi, omega
 
 
 def compute_energy(solver, psi, omega):
@@ -129,7 +139,7 @@ def run_integrator_comparison():
     print("="*60)
     
     # Setup (shared)
-    grid = ToroidalGrid(nr=32, ntheta=32, r_min=0.1, r_max=1.0)
+    grid = ToroidalGrid(R0=1.0, a=0.3, nr=32, ntheta=64)
     dt = 1e-3
     n_steps = 1000
     
