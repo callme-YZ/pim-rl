@@ -39,16 +39,18 @@ except ImportError:
 
 def compute_energy(solver, psi, omega):
     """Compute total energy H = ∫[½|∇φ|² + ½|∇ψ|²] dV"""
+    from pytokmhd.operators import gradient_toroidal
+    
     grid = solver.grid
-    phi = solver.poisson_solver.solve(omega)
+    phi = solver.compute_phi(omega)
     
-    grad_phi_r, grad_phi_theta = solver.gradient(phi)
-    grad_psi_r, grad_psi_theta = solver.gradient(psi)
+    grad_phi_r, grad_phi_theta = gradient_toroidal(phi, grid)
+    grad_psi_r, grad_psi_theta = gradient_toroidal(psi, grid)
     
-    grad_phi_sq = grad_phi_r**2 + (grad_phi_theta / grid.R[:, None])**2
-    grad_psi_sq = grad_psi_r**2 + (grad_psi_theta / grid.R[:, None])**2
+    grad_phi_sq = grad_phi_r**2 + (grad_phi_theta / grid.R_grid)**2
+    grad_psi_sq = grad_psi_r**2 + (grad_psi_theta / grid.R_grid)**2
     
-    dV = grid.dR * grid.dtheta * grid.R[:, None]
+    dV = grid.dr * grid.dtheta * grid.R_grid
     
     return 0.5 * np.sum((grad_phi_sq + grad_psi_sq) * dV)
 

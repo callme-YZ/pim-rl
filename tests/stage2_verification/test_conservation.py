@@ -48,21 +48,23 @@ def compute_energy(solver, psi, omega):
     - Kinetic: E_kin = ∫ ½|∇φ|² dV (φ from ∇²φ = ω)
     - Magnetic: E_mag = ∫ ½|∇ψ|² dV
     """
+    from pytokmhd.operators import gradient_toroidal
+    
     grid = solver.grid
     
-    # Solve for φ from ω
-    phi = solver.poisson_solver.solve(omega)
+    # Solve for φ from ω (use correct API)
+    phi = solver.compute_phi(omega)
     
-    # Compute gradients
-    grad_phi_r, grad_phi_theta = solver.gradient(phi)
-    grad_psi_r, grad_psi_theta = solver.gradient(psi)
+    # Compute gradients using operators module
+    grad_phi_r, grad_phi_theta = gradient_toroidal(phi, grid)
+    grad_psi_r, grad_psi_theta = gradient_toroidal(psi, grid)
     
     # |∇f|² in toroidal geometry
-    grad_phi_sq = grad_phi_r**2 + (grad_phi_theta / grid.R[:, None])**2
-    grad_psi_sq = grad_psi_r**2 + (grad_psi_theta / grid.R[:, None])**2
+    grad_phi_sq = grad_phi_r**2 + (grad_phi_theta / grid.R_grid)**2
+    grad_psi_sq = grad_psi_r**2 + (grad_psi_theta / grid.R_grid)**2
     
     # Integrate with volume element R dr dθ
-    dV = grid.dR * grid.dtheta * grid.R[:, None]
+    dV = grid.dr * grid.dtheta * grid.R_grid
     
     E_kin = 0.5 * np.sum(grad_phi_sq * dV)
     E_mag = 0.5 * np.sum(grad_psi_sq * dV)
