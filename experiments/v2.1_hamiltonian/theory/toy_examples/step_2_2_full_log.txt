@@ -1,0 +1,38 @@
+============================================================
+Latent Space HNN (Synthetic Data) - Step 2.2
+============================================================
+
+Generating synthetic dataset...
+Dataset: 4900 image pairs
+Image shape: (16, 16, 2)
+
+Initializing models...
+Total parameters: 182403
+
+Training (3000 epochs)...
+Epoch 500/3000, Loss: 0.034350
+Epoch 1000/3000, Loss: 0.034358
+Epoch 1500/3000, Loss: 0.034342
+Epoch 2000/3000, Loss: 0.034354
+Epoch 2500/3000, Loss: 0.034349
+Epoch 3000/3000, Loss: 0.034346
+Final loss: 0.034346
+
+============================================================
+Testing Conservation in Latent Space
+============================================================
+/Users/yz/.openclaw/workspace-xiaoa/pim-rl/experiments/v2.1_hamiltonian/theory/toy_examples/pendulum_latent_hnn_synthetic.py:329: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Please consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at /Users/runner/work/pytorch/pytorch/pytorch/torch/csrc/utils/tensor_new.cpp:256.)
+  z_t = torch.FloatTensor([z_np])
+
+Latent space conservation:
+H(t=0) = 0.06407175
+H(t=10) = 0.06407175
+H diff = 0.00000000
+Drift = 0.000000%
+
+============================================================
+Step 2.2 Result
+============================================================
+✅ EXCELLENT: <0.1% drift in latent space
+
+Step 2.2 complete!
