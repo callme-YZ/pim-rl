@@ -11,8 +11,8 @@ Status: TEST ONLY (will fail until Step 3 implementation)
 import numpy as np
 import pytest
 
-# Will import after Step 3
-# from pytokeq.equilibrium.solver.picard_gs_solver import Constraints
+# Import Constraints class
+from pytokeq.equilibrium.solver.picard_gs_solver import Constraints
 
 
 def test_constraints_xpoint_only():
@@ -87,11 +87,11 @@ def test_constraints_morning_lesson_case():
     # BAD configuration (morning lesson!)
     constraints_bad = Constraints(
         xpoint=[(1.4, -1.5)],  # 2 equations
-        isoflux=[(1.2, -1.5)]  # 1 equation
-        # Total: 3 equations for 6 coils = UNDERDETERMINED!
+        isoflux=[(1.2, -1.5)]  # 0 equations (1 point → N-1=0)
+        # Total: 2 equations for 6 coils = UNDERDETERMINED!
     )
     
-    assert constraints_bad.num_equations() == 3
+    assert constraints_bad.num_equations() == 2
     
     # GOOD configuration (fix)
     constraints_good = Constraints(
