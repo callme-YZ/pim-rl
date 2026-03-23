@@ -26,11 +26,14 @@ from pytokmhd.solvers.hamiltonian_mhd import HamiltonianMHD
 try:
     from pytokmhd.physics.initial_conditions import ballooning_ic
 except ImportError:
+    from pytokmhd.operators import laplacian_toroidal
+    
     def ballooning_ic(grid, beta=0.17, q_axis=1.2, shear=0.5):
+        """Simple initial condition for testing"""
         r = grid.r[:, None]
         theta = grid.theta[None, :]
         psi = beta * r**2 * np.sin(theta)
-        omega = -grid.laplacian(psi)
+        omega = -laplacian_toroidal(psi, grid)
         return psi, omega
 
 
