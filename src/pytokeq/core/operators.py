@@ -86,48 +86,88 @@ def build_grad_shafranov_operator(R: np.ndarray, Z: np.ndarray) -> csr_matrix:
             # R coordinate at this point
             Ri = R[i]
             
-            # Coefficients for 5-point stencil
-            # ∂²/∂R² terms
-            c_R_plus = 1.0 / dR**2
-            c_R_minus = 1.0 / dR**2
-            c_R_center_2nd = -2.0 / dR**2
+            # Determine boundary status
+            at_R_lower = (i == 0)
+            at_R_upper = (i == Nr - 1)
+            at_Z_lower = (j == 0)
+            at_Z_upper = (j == Nz - 1)
             
-            # -(1/R)∂/∂R terms (1st derivative)
-            c_R_plus_1st = -1.0 / (2 * Ri * dR)
-            c_R_minus_1st = 1.0 / (2 * Ri * dR)
+            # === R-direction contributions ===
+            if at_R_lower:
+                # Forward difference: ∂²/∂R², ∂/∂R
+                # 2nd order forward for 1st derivative
+                c_R0 = 1.0/dR**2 + 3.0/(2*Ri*dR)
+                add_entry(idx, idx, c_R0)
+                
+                if i+1 < Nr:
+                    c_R1 = -2.0/dR**2 - 4.0/(2*Ri*dR)
+                    add_entry(idx, (i+1)*Nz + j, c_R1)
+                
+                if i+2 < Nr:
+                    c_R2 = 1.0/dR**2 + 1.0/(2*Ri*dR)
+                    add_entry(idx, (i+2)*Nz + j, c_R2)
+                    
+            elif at_R_upper:
+                # Backward difference
+                c_R0 = 1.0/dR**2 - 3.0/(2*Ri*dR)
+                add_entry(idx, idx, c_R0)
+                
+                if i-1 >= 0:
+                    c_R1 = -2.0/dR**2 + 4.0/(2*Ri*dR)
+                    add_entry(idx, (i-1)*Nz + j, c_R1)
+                
+                if i-2 >= 0:
+                    c_R2 = 1.0/dR**2 - 1.0/(2*Ri*dR)
+                    add_entry(idx, (i-2)*Nz + j, c_R2)
+                    
+            else:
+                # Interior: central difference
+                c_R0 = -2.0/dR**2
+                add_entry(idx, idx, c_R0)
+                
+                c_Rp = 1.0/dR**2 - 1.0/(2*Ri*dR)
+                add_entry(idx, (i+1)*Nz + j, c_Rp)
+                
+                c_Rm = 1.0/dR**2 + 1.0/(2*Ri*dR)
+                add_entry(idx, (i-1)*Nz + j, c_Rm)
             
-            # ∂²/∂Z² terms
-            c_Z_plus = 1.0 / dZ**2
-            c_Z_minus = 1.0 / dZ**2
-            c_Z_center_2nd = -2.0 / dZ**2
-            
-            # Center point coefficient (combine 2nd derivatives)
-            c_center = c_R_center_2nd + c_Z_center_2nd
-            
-            # Add center point
-            add_entry(idx, idx, c_center)
-            
-            # R+1 neighbor (if exists)
-            if i < Nr - 1:
-                idx_Rp = (i+1) * Nz + j
-                c_Rp = c_R_plus + c_R_plus_1st
-                add_entry(idx, idx_Rp, c_Rp)
-            
-            # R-1 neighbor (if exists)
-            if i > 0:
-                idx_Rm = (i-1) * Nz + j
-                c_Rm = c_R_minus + c_R_minus_1st
-                add_entry(idx, idx_Rm, c_Rm)
-            
-            # Z+1 neighbor (if exists)
-            if j < Nz - 1:
-                idx_Zp = i * Nz + (j+1)
-                add_entry(idx, idx_Zp, c_Z_plus)
-            
-            # Z-1 neighbor (if exists)
-            if j > 0:
-                idx_Zm = i * Nz + (j-1)
-                add_entry(idx, idx_Zm, c_Z_minus)
+            # === Z-direction contributions ===
+            if at_Z_lower:
+                # Forward 2nd derivative
+                c_Z0 = 1.0/dZ**2
+                add_entry(idx, idx, c_Z0)
+                
+                if j+1 < Nz:
+                    c_Z1 = -2.0/dZ**2
+                    add_entry(idx, i*Nz + (j+1), c_Z1)
+                
+                if j+2 < Nz:
+                    c_Z2 = 1.0/dZ**2
+                    add_entry(idx, i*Nz + (j+2), c_Z2)
+                    
+            elif at_Z_upper:
+                # Backward 2nd derivative
+                c_Z0 = 1.0/dZ**2
+                add_entry(idx, idx, c_Z0)
+                
+                if j-1 >= 0:
+                    c_Z1 = -2.0/dZ**2
+                    add_entry(idx, i*Nz + (j-1), c_Z1)
+                
+                if j-2 >= 0:
+                    c_Z2 = 1.0/dZ**2
+                    add_entry(idx, i*Nz + (j-2), c_Z2)
+                    
+            else:
+                # Interior: central 2nd derivative
+                c_Z0 = -2.0/dZ**2
+                add_entry(idx, idx, c_Z0)
+                
+                c_Zp = 1.0/dZ**2
+                add_entry(idx, i*Nz + (j+1), c_Zp)
+                
+                c_Zm = 1.0/dZ**2
+                add_entry(idx, i*Nz + (j-1), c_Zm)
     
     # Convert to CSR format (efficient for matrix-vector multiply)
     L = csr_matrix((data, (row_indices, col_indices)), shape=(N, N))
