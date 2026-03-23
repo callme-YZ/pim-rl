@@ -224,7 +224,10 @@ class HamiltonianActorCriticPolicy(ActorCriticPolicy):
         
         # Compute Hamiltonian gradient (for guidance)
         if self.lambda_h > 0:
-            grad_h = self.h_network.gradient(latent)
+            # Detach and re-enable gradients for H computation
+            latent_for_h = latent.detach().requires_grad_(True)
+            grad_h = self.h_network.gradient(latent_for_h)
+            grad_h = grad_h.detach()  # Detach gradient for actor
         else:
             grad_h = None
         
@@ -261,7 +264,9 @@ class HamiltonianActorCriticPolicy(ActorCriticPolicy):
         
         # Hamiltonian gradient
         if self.lambda_h > 0:
-            grad_h = self.h_network.gradient(latent)
+            latent_for_h = latent.detach().requires_grad_(True)
+            grad_h = self.h_network.gradient(latent_for_h)
+            grad_h = grad_h.detach()
         else:
             grad_h = None
         
