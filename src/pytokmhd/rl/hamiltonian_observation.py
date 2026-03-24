@@ -265,14 +265,24 @@ class HamiltonianObservationScalar:
     
     def _fourier_modes(self, field: jnp.ndarray) -> np.ndarray:
         """
-        Extract Fourier modes (simple 1D FFT along theta).
+        Extract Fourier mode amplitudes (CORRECTED ⚛️).
         
-        Returns first n_modes coefficients (magnitudes).
+        Returns peak amplitude for first n_modes (preserves radial structure).
+        
+        Fix (2026-03-24): Previous version averaged over r before FFT,
+        destroying radial mode structure. Now extracts true mode amplitudes.
         """
-        # Average over r, FFT over theta
-        field_avg = jnp.mean(field, axis=0)  # (ntheta,)
-        fft = jnp.fft.fft(field_avg)
+        # 2D FFT over theta (keep radial dimension)
+        fft_2d = jnp.fft.fft(field, axis=1) / field.shape[1]
         
+        # Extract peak amplitude for each mode number m
+        modes = []
+        for m in range(self.n_modes):
+            m_mode = fft_2d[:, m]  # Mode m at all radial points
+            m_amp = jnp.max(jnp.abs(m_mode))  # Peak amplitude
+            modes.append(m_amp)
+        
+        return jnp.array(modes, dtype=jnp.float32)
         # Take magnitude of first n_modes
         modes = jnp.abs(fft[:self.n_modes])
         return np.array(modes, dtype=np.float32)
