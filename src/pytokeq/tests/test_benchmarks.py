@@ -105,3 +105,89 @@ def test_benchmark_module_import():
 
 if __name__ == "__main__":
     pytest.main([__file__, "-v", "-s"])
+
+
+class TestDIIIDBenchmark:
+    """Test DIII-D H-mode benchmark"""
+    
+    def test_diiid_params(self):
+        """Test DIII-D parameters"""
+        from benchmarks.diiid_hmode import DIIID_PARAMS
+        
+        assert DIIID_PARAMS['R0'] == 1.67
+        assert DIIID_PARAMS['a'] == 0.67
+        assert DIIID_PARAMS['q_95'] == 4.0
+        
+        print("✅ DIII-D parameters defined")
+    
+    def test_diiid_equilibrium(self):
+        """Test DIII-D equilibrium generation"""
+        from benchmarks.diiid_hmode import diiid_hmode_equilibrium
+        
+        diiid_eq = diiid_hmode_equilibrium()
+        
+        assert 'name' in diiid_eq
+        assert 'DIII-D' in diiid_eq['name']
+        
+        # Test q-profile
+        psi = jnp.linspace(0, 1, 100)
+        q = diiid_eq['profiles']['q'](psi)
+        
+        assert q[0] > 1.0, f"q(0) = {q[0]}"
+        assert q[95] > 3.5, f"q(0.95) = {q[95]}"
+        
+        print(f"✅ DIII-D equilibrium: q(0)={q[0]:.2f}, q(0.95)={q[95]:.2f}")
+
+
+class TestEASTBenchmark:
+    """Test EAST reference benchmark"""
+    
+    def test_east_params(self):
+        """Test EAST parameters"""
+        from benchmarks.east_reference import EAST_PARAMS
+        
+        assert EAST_PARAMS['R0'] == 1.85
+        assert EAST_PARAMS['a'] == 0.45
+        assert EAST_PARAMS['q_95'] == 5.0
+        
+        print("✅ EAST parameters defined")
+    
+    def test_east_equilibrium(self):
+        """Test EAST equilibrium generation"""
+        from benchmarks.east_reference import east_reference_equilibrium
+        
+        east_eq = east_reference_equilibrium()
+        
+        assert 'name' in east_eq
+        assert 'EAST' in east_eq['name']
+        
+        # Test q-profile
+        psi = jnp.linspace(0, 1, 100)
+        q = east_eq['profiles']['q'](psi)
+        
+        assert q[0] > 1.0, f"q(0) = {q[0]}"
+        assert q[95] > 4.5, f"q(0.95) = {q[95]}"
+        
+        print(f"✅ EAST equilibrium: q(0)={q[0]:.2f}, q(0.95)={q[95]:.2f}")
+
+
+def test_all_three_benchmarks():
+    """Test all three benchmarks can be imported and used"""
+    from benchmarks import (
+        iter_baseline_equilibrium,
+        diiid_hmode_equilibrium,
+        east_reference_equilibrium
+    )
+    
+    benchmarks = [
+        ('ITER', iter_baseline_equilibrium()),
+        ('DIII-D', diiid_hmode_equilibrium()),
+        ('EAST', east_reference_equilibrium()),
+    ]
+    
+    for name, eq in benchmarks:
+        assert 'params' in eq
+        assert 'profiles' in eq
+        print(f"✅ {name} benchmark available")
+    
+    print("\n✅ All three standard benchmarks ready!")
