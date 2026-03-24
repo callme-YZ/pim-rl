@@ -133,12 +133,13 @@ class PIDController(BaselineAgent):
         u = Kp * error + Ki * ∫error dt + Kd * d(error)/dt
     
     Control variable: m=1 Fourier mode amplitude
-    Control action: Resistivity multiplier (eta_mult)
+    Control action: Viscosity multiplier (nu_mult)
     
-    Physics (小P ⚛️):
+    Physics (小P corrected ⚛️):
     - m=1 mode drives tearing instability
-    - Higher η → more dissipation → mode suppression
-    - PID tunes η to maintain target amplitude
+    - Tearing mode driven by velocity shear
+    - Higher ν → viscous damping → suppresses velocity → mode suppression
+    - PID tunes ν to maintain target amplitude
     
     Features:
     - Anti-windup protection
@@ -228,23 +229,25 @@ class PIDController(BaselineAgent):
         # PID output
         u = self.Kp * error + self.Ki * error_int_candidate + self.Kd * error_der
         
-        # Action: eta_mult (control resistivity)
-        # Baseline: eta_mult = 1.0 + u
-        # (Higher η → more dissipation → suppress mode)
-        eta_mult = 1.0 + u
+        # Action: nu_mult (control viscosity)
+        # Physics (小P corrected ⚛️):
+        # - Higher ν → stronger viscous damping → suppresses velocity
+        # - Tearing mode driven by velocity shear
+        # - Damping velocity → mode suppression ✅
+        nu_mult = 1.0 + u
         
         # Clip to valid range
-        eta_mult_clipped = np.clip(eta_mult, self.action_low[0], self.action_high[0])
+        nu_mult_clipped = np.clip(nu_mult, self.action_low[1], self.action_high[1])
         
         # Anti-windup: Only integrate if not saturated
-        if np.abs(eta_mult_clipped - eta_mult) < 1e-6:
+        if np.abs(nu_mult_clipped - nu_mult) < 1e-6:
             # Not saturated, update integral
             self.error_int = error_int_candidate
         # else: saturated, don't update integral (anti-windup)
         
         # Action: [eta_mult, nu_mult]
-        # Keep nu_mult = 1.0 (don't control viscosity)
-        action = np.array([eta_mult_clipped, 1.0], dtype=np.float32)
+        # Keep eta_mult = 1.0 (don't control resistivity)
+        action = np.array([1.0, nu_mult_clipped], dtype=np.float32)
         
         # Update state
         self.error_prev = error
