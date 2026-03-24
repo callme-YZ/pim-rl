@@ -32,34 +32,30 @@ from pytokmhd.rl.classical_controllers import make_baseline_agent
 
 def reset_tearing_mode(env, seed=None):
     """
-    Reset environment with small m=1 tearing mode perturbation.
+    Reset environment with Harris sheet tearing mode IC.
     
-    Physics (小P ⚛️):
-    - Small m=1 mode: ψ = ε * r(1-r) sin(θ)
-    - No initial flow: φ = 0
-    - Amplitude ε ~ 0.01 (controllable range)
+    Physics (小P ⚛️, Issue #29):
+    - Harris sheet equilibrium + m=1 tearing perturbation
+    - Expected growth: ~11% in 0.1s (γ ≈ 1.05 s⁻¹)
+    - Proper unstable tearing mode (FKR theory)
     
-    Fixes Issue #28 initial condition problem.
+    Fixes Issue #28 IC problem (was decay, now growth).
     """
-    import numpy as np
     import jax.numpy as jnp
+    from pim_rl.physics.v2.tearing_ic import create_tearing_ic
     
     # Set seed if provided
     if seed is not None:
+        import numpy as np
         np.random.seed(seed)
     
-    # Grid
+    # Create Harris sheet tearing IC (Issue #29 ⚛️)
     nr, ntheta = env.grid.nr, env.grid.ntheta
-    r = np.linspace(0, 1, nr)[:, None]
-    theta = np.linspace(0, 2*np.pi, ntheta)[None, :]
+    psi, phi = create_tearing_ic(nr=nr, ntheta=ntheta)
     
-    # Small m=1 tearing mode (小P recommendation ⚛️)
-    epsilon = 0.01  # Small perturbation
-    psi = jnp.array(
-        epsilon * r * (1 - r) * np.sin(theta),  # m=1 mode
-        dtype=jnp.float32
-    )
-    phi = jnp.zeros_like(psi)  # No initial flow
+    # Convert to JAX arrays
+    psi = jnp.array(psi, dtype=jnp.float32)
+    phi = jnp.array(phi, dtype=jnp.float32)
     
     # Initialize solver
     env.mhd_solver.initialize(psi, phi)
@@ -229,13 +225,15 @@ def run_experiments(
     print(f"{'='*60}\n")
     
     # Create environment
+    # Note: eta=0.05 matches Issue #29 Harris sheet IC design (小P ⚛️)
+    # This produces observable tearing growth (~11% in 0.1s)
     env = make_hamiltonian_mhd_env(
         nr=32,
         ntheta=64,
         nz=8,
         dt=1e-4,
         max_steps=max_steps,
-        eta=1e-5,
+        eta=0.05,  # Issue #29 design parameter
         nu=1e-4,
         normalize_obs=False  # Disable for baseline comparison
     )
