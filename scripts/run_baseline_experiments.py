@@ -207,7 +207,7 @@ def compute_metrics(diagnostics):
 def run_experiments(
     agent_type: str,
     n_trials: int = 5,
-    max_steps: int = 200,  # Reduced from 1000 (小P optimization ⚛️)
+    max_steps: int = 1000,  # Increased to see tearing growth (小P ⚛️)
     save_dir: str = "results/issue28"
 ):
     """

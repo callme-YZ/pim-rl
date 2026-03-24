@@ -271,7 +271,7 @@ class HamiltonianMHDEnv(gym.Env):
         # Apply action to solver (Issue #28 fix)
         # Note: viscosity (nu) not yet implemented in CompleteMHDSolver
         # Only resistivity (eta) control functional
-        self.mhd_solver.physics_solver.set_eta(eta)
+        self.mhd_solver.solver.set_eta(eta)
         
         # Issue #26: Real MHD evolution
         # Evolution in (z⁺, z⁻) space, then convert back to (ψ, φ) for observation
