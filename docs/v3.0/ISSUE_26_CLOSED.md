@@ -309,3 +309,59 @@ Implemented time integrator interface and integrated real MHD solver into RL env
 ---
 
 _Issue #26 complete! Phase 2 milestone achieved!_ ⚛️🤖✨
+
+---
+
+## ERRATUM (2026-03-24 17:52) ⚛️
+
+**Problem Discovered:** env.step() performance bottleneck
+
+**Root Cause:**
+- Original design forced observation computation every step
+- Poisson conversion: ~400ms/step (vs 17ms MHD evolution)
+- Blocked Issue #28 baseline experiments (1000 steps = 7 min/trial)
+
+**Fix Applied (Commit 1343db6):**
+```python
+def step(self, action, compute_obs=True):
+    # Evolution (fast)
+    self.mhd_solver.step(dt)
+    
+    # Observation (optional, slow)
+    if compute_obs:
+        self.psi, self.phi = self.mhd_solver.get_mhd_state()  # Poisson
+        obs = self._get_observation()
+        self._last_obs = obs
+    else:
+        obs = self._last_obs  # Cached, no Poisson
+    
+    return obs, reward, terminated, truncated, info
+```
+
+**Performance:**
+- compute_obs=True:  ~420ms/step (full, default)
+- compute_obs=False: ~17ms/step (cached, 25× faster!)
+
+**Use Cases:**
+- Baseline experiments: compute_obs=False except final step
+- RL training: compute_obs=True (need accurate policy)
+- Debugging: compute_obs=False (fast iteration)
+
+**Backward Compatible:** default=True (standard Gym API)
+
+**Lesson:**
+- Performance optimization != premature optimization
+- Should have considered use cases beyond RL training
+- Bottleneck analysis critical for long experiments
+
+**Impact:**
+- ✅ Unblocks Issue #28
+- ✅ 25× speedup for sparse observation scenarios
+- ✅ No breaking changes (backward compatible)
+
+**小P责任:** Should have identified this in Issue #26 design ⚛️
+
+---
+
+**Updated:** 2026-03-24 17:52  
+**Status:** Issue #26 CLOSED (with performance fix)
