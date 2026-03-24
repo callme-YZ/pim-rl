@@ -113,16 +113,18 @@ def run_episode(env, agent, seed=None, record_every=100):
         # Get action
         action = agent.act(obs)
         
-        # Step environment
-        obs_next, reward, terminated, truncated, info = env.step(action)
+        # Step environment (Issue #26 fix: sparse obs for speed ⚛️)
+        # Only compute full observation at recording intervals
+        need_obs = ((step + 1) % record_every == 0) or (step + 1 >= env.max_steps)
+        obs_next, reward, terminated, truncated, info = env.step(action, compute_obs=need_obs)
         done = terminated or truncated
         
         # Always record action & reward (cheap)
         actions.append(action.copy())
         rewards.append(reward)
         
-        # Sparse observation recording (expensive)
-        if (step + 1) % record_every == 0 or done:
+        # Record observation when computed
+        if need_obs:
             # obs[7] = m=0, obs[8] = m=1 (小P correction ⚛️)
             m1_amp = np.abs(obs_next[8])
             H = obs_next[0]
