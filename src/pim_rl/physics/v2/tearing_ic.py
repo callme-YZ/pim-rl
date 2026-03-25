@@ -19,9 +19,9 @@ from typing import Tuple
 
 
 def psi_harris_sheet(r: np.ndarray, r0: float = 0.5, lam: float = 0.1, 
-                     B0: float = 1.0) -> np.ndarray:
+                     B0: float = 1.0, q_correction: float = 1.2) -> np.ndarray:
     """
-    Harris sheet equilibrium poloidal flux.
+    Modified Harris sheet equilibrium with q≈2 rational surface.
     
     Parameters
     ----------
@@ -33,6 +33,8 @@ def psi_harris_sheet(r: np.ndarray, r0: float = 0.5, lam: float = 0.1,
         Sheet half-width (default: 0.1)
     B0 : float
         Characteristic field strength (default: 1.0)
+    q_correction : float
+        Parabolic correction to achieve q≈2 (default: 1.2)
         
     Returns
     -------
@@ -41,12 +43,21 @@ def psi_harris_sheet(r: np.ndarray, r0: float = 0.5, lam: float = 0.1,
         
     Notes
     -----
-    From theory:
-        B_θ = B₀ tanh((r-r₀)/λ)
-        ψ = ∫ B_θ dr = B₀λ ln(cosh((r-r₀)/λ))
+    Combines two components:
+    1. Harris sheet: ψ_H = B₀λ ln(cosh((r-r₀)/λ)) 
+       → Provides current sheet (J reversal)
+    2. Parabolic: ψ_p = q_correction * r²
+       → Boosts q profile to reach q≈2
+    
+    Result: q≈2 at r≈0.5, with current sheet for tearing instability.
+    
+    Fix for Issue #33: Previous IC had q<2 everywhere (no resonance).
+    Date: 2026-03-25, Author: 小P ⚛️
     """
     x = (r - r0) / lam
-    return B0 * lam * np.log(np.cosh(x))
+    psi_harris = B0 * lam * np.log(np.cosh(x))
+    psi_parabolic = q_correction * r**2
+    return psi_harris + psi_parabolic
 
 
 def current_harris_sheet(r: np.ndarray, r0: float = 0.5, lam: float = 0.1,

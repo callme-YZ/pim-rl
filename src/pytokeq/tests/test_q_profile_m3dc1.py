@@ -153,13 +153,13 @@ def test_m3dc1_q_profile():
         print(f"  ❌ q(axis) error {q_axis_error*100:.1f}% (NO IMPROVEMENT)")
         success = False
     
-    # Check 2: q(edge) error
-    if q_edge_error < 0.05:
-        print(f"  ✅ q(edge) error < 5% ({q_edge_error*100:.1f}%)")
-    elif q_edge_error < 0.10:
-        print(f"  ✓ q(edge) error < 10% ({q_edge_error*100:.1f}%)")
+    # Check 2: q(95%) error
+    if q_95_error < 0.05:
+        print(f"  ✅ q(95%) error < 5% ({q_95_error*100:.1f}%)")
+    elif q_95_error < 0.10:
+        print(f"  ✓ q(95%) error < 10% ({q_95_error*100:.1f}%)")
     else:
-        print(f"  ⚠️  q(edge) error {q_edge_error*100:.1f}%")
+        print(f"  ⚠️  q(95%) error {q_95_error*100:.1f}%")
     
     # Check 3: Monotonicity
     dq = np.diff(q)
@@ -201,8 +201,8 @@ def test_m3dc1_q_profile():
     print(f"  ...")
     print(f"{psi_norm[-1]:10.3f} {q[-1]:10.3f}")
     
-    return q_axis_error, q_edge_error
+    return q_axis_error, q_95_error
 
 
 if __name__ == '__main__':
-    q_axis_error, q_edge_error = test_m3dc1_q_profile()
+    q_axis_error, q_95_error = test_m3dc1_q_profile()
